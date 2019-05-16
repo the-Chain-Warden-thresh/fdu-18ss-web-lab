@@ -180,6 +180,46 @@
          </tr>
       </table>         
 
+      <script>
+            function print(paint) {
+                document.getElementsByClassName("img-thumbnail")[paint.i].innerHTML = "<img src=\"./images/art/tiny/" + paint.img + "\">";
+                document.getElementsByClassName("product")[paint.i].innerHTML = paint.pro;
+                document.getElementsByClassName("quantity")[paint.i].innerHTML = paint.qua;
+                document.getElementsByClassName("price1")[paint.i].innerHTML = "$" + paint.pri;
+                document.getElementsByClassName("amount")[paint.i].innerHTML = "$" + paint.amo;
+            }
+    
+            function Construct(img, pro, qua, pri) {
+                this.img = img;
+                this.pro = pro;
+                this.qua = qua;
+                this.pri = pri;
+            }
+    
+            var p = new Array(1);
+            p[0] = new Construct("116010.jpg", "Artist Holding a Thistle", 2, 500);
+            p[1] = new Construct("113010.jpg", "Self-portrait in a Straw Hat", 1, 700);
+    
+            for (var j = 0; j <= 1; j++) {
+                p[j].i = j;
+                p[j].amo = p[j].qua * p[j].pri;
+                print(p[j]);
+            }
+    
+            function print2() {
+                var subtotal = 0, tax, shipping = 0, grandTotal;
+                for (var j = 0; j < p.length; j++) subtotal = subtotal + p[j].amo;
+                tax = Math.round(subtotal / 10);
+                if (subtotal > 1000) shipping = 0; else shipping = 40;
+                grandTotal = tax + shipping + subtotal;
+                document.getElementById("subtotal").innerHTML = "$" + subtotal;
+                document.getElementById("tax").innerHTML = "$" + tax;
+                document.getElementById("shipping").innerHTML = "$" + shipping;
+                document.getElementById("grand-total").innerHTML = "$" + grandTotal;
+            }
+    
+            print2();
+        </script>
 </div>  <!-- end container -->
 
 <footer>

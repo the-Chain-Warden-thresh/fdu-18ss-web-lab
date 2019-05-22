@@ -12,6 +12,14 @@ $shippingFlatAmount = 200;
 $subtotal = 0;
 $shipping = 0;
 $grandTotal = 0;
+$subtotal = $quantity1 * $price1 + $quantity2 * $price2 + $quantity3 * $price3 + $quantity4 * $price4;
+if($subtotal > $shippingThreshold):
+    $shipping = 100;
+else:
+    $shipping = $shippingFlatAmount;
+endif;
+$grandTotal = $subtotal + $shipping;
+
 
 ?>
 
@@ -35,6 +43,9 @@ $grandTotal = 0;
 <body>
     
 <!-- You should decide where to add the `header.inc.php` and `left.inc.php` -->
+<?php include 'header.inc.php'; ?>
+<?php include 'left.inc.php'; ?>
+
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
             mdl-layout--fixed-header">
 
